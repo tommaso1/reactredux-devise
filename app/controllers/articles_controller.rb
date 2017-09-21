@@ -1,10 +1,12 @@
 class ArticlesController < ApplicationController
+  load_and_authorize_resource
 
 
 
   before_action :authenticate_user!, except: [ :index ]
   def index
     @articles = Article.all()
+
     render json: @articles
   end
   def create
@@ -16,19 +18,10 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-
-    if current_user
-      ability = Ability.new(current_user)
-      if ability.can? :destroy, Article
-        Article.find(params[:id]).destroy
-        render json: {'ok':'ok'}
-      else
-        render json: {'ok': 'no'}, :status => 401
-      end
-    else
-      render json: {'ok': 'no'}, status => 401
-    end
-
+    #@article = Article.find(params[:id])
+    #authorize! :destroy, :article
+    @article.destroy
+    render json: {'ok':'ok'}
   end
 
 

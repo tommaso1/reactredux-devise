@@ -26,9 +26,10 @@ gem 'puma', '~> 3.7'
 # gem 'rack-cors'
 
 gem 'devise_token_auth'
-gem "cancan"
+gem 'cancancan'
 gem 'rolify'
 gem 'rack-cors', :require => 'rack/cors'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
