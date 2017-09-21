@@ -23,7 +23,7 @@ module RailsApiDevise
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :delete, :options], :expose => ['client', 'access-token', 'expiry', 'uid']
+        resource '*', :headers => :any, :methods => [:get, :post, :delete, :options], :expose => ['client', 'access-token', 'expiry', 'uid', 'ETag']
 
       end
     end

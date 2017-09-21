@@ -29,6 +29,7 @@ gem 'devise_token_auth'
 gem 'cancancan'
 gem 'rolify'
 gem 'rack-cors', :require => 'rack/cors'
+gem "letter_opener", :group => :development
 
 
 group :development, :test do

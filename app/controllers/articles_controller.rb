@@ -11,9 +11,11 @@ class ArticlesController < ApplicationController
   end
   def create
     article = Article.create(
-        title: params[:article][:title],
-        body: params[:article][:body]
+        title: article_params[:title],
+        body: article_params[:body],
+        user_id: current_user.id,
     )
+    AdminMailer.article_submit_email(article).deliver_now
     render json: { article: article }
   end
 
@@ -24,6 +26,9 @@ class ArticlesController < ApplicationController
     render json: {'ok':'ok'}
   end
 
-
+  private
+    def article_params
+      params.permit( :title, :body)
+    end
 
 end
